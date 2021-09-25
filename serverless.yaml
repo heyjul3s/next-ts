@@ -1,0 +1,6 @@
+# serverless.yml
+
+devExceptionalFrontEnd:
+  component: '@sls-next/serverless-component@3.1.0'
+  inputs:
+    domain: ['dev', 'mydomain.com']
