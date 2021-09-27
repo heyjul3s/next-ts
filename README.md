@@ -1,3 +1,9 @@
+- pages - nav, login form, api, static
+- display name for styled components
+- Linting
+- Docker
+- i18next
+
 # Next TS
 
 A typescript powered NextJS boilerplate with ChakraUI and RecoilJS.
@@ -131,6 +137,54 @@ The **utils** directory will be where general, generic utility functions are kep
 ### Setting Up Storybook
 
 To add Storybook to the project, simply run `npx sb init` and follow the prompts.
+
+### Web Workers
+
+To include Web Workers in the project. First install the **worker-plugin** package.
+
+```sh
+yarn add worker-plugin
+```
+
+Next, include the **worker-plugin** in Webpack's config via updating **next.config.js**
+
+```js
+const withPlugins = require('next-compose-plugins');
+const { i18n } = require('./next-i18next.config');
+const WorkerPlugin = require('worker-plugin');
+
+const nextConfig = {
+  target: 'serverless',
+  reactStrictMode: true,
+  i18n,
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    if (!isServer) {
+      config.plugins.push(
+        new WorkerPlugin({
+          globalObject: 'self'
+        })
+      );
+    }
+    return config;
+  }
+};
+
+module.exports = withPlugins([], nextConfig);
+```
+
+Finally, update **tsconfig's** compiler option property and you should be good to go.
+
+```json
+{
+  ...
+  "compilerOptions": {
+      :
+      "lib": ["dom", "es2017", "webworker"],
+      :
+  }
+  ...
+}
+```
 
 ### Module Path Aliasing
 
