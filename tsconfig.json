@@ -16,7 +16,7 @@
     "target": "esnext",
     "module": "esnext",
     "jsx": "preserve",
-    "lib": ["dom", "es2018"],
+    "lib": ["dom", "es2020"],
     "moduleResolution": "node",
     "allowJs": true,
     "noEmit": true,
