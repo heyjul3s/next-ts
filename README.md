@@ -1,9 +1,3 @@
-- pages - nav, login form, api, static
-- display name for styled components
-- Linting
-- Docker
-- i18next
-
 # Next TS
 
 A typescript powered NextJS boilerplate with ChakraUI and RecoilJS.
