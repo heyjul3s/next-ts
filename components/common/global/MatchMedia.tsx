@@ -21,6 +21,7 @@ export default function MatchMedia({
       matchListRef.current.addEventListener('change', onMediaQueryListEvent);
       setIsMatch(matchListRef.current.matches);
     } else {
+      // eslint-disable-next-line
       console.error('Error: typeof "window" is undefined.');
       setIsMatch(false);
     }
@@ -33,7 +34,7 @@ export default function MatchMedia({
         );
       }
     };
-  }, [query]);
+  }, []);
 
   return !!isMatch ? (
     <React.Fragment>{children(isMatch)}</React.Fragment>

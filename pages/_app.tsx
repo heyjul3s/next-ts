@@ -81,7 +81,10 @@ export default function App({
 }
 
 export function reportWebVitals(metric: NextWebVitalsMetric): void {
-  console.log(`${metric.name}: `, metric);
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line
+    console.log(`${metric.name}: `, metric);
+  }
 }
 
 export { getServerSideProps } from '@/components/common';

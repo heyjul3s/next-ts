@@ -22,7 +22,8 @@ export default class Document extends NextDocument<DocumentProps | unknown> {
           enhanceApp: (App) => (props) => <App {...props} />
         });
     } catch (error) {
-      console.log(error);
+      // eslint-disable-next-line
+      console.error(error);
     }
     return {
       ...initialProps,
