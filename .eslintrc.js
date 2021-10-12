@@ -29,7 +29,7 @@ module.exports = {
     'prettier'
   ],
   rules: {
-    'no-console': { allow: ['warn', 'error'] },
+    'no-console': 1,
     'react/prop-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     'prettier/prettier': 'error',
