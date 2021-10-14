@@ -1,8 +1,8 @@
-import { extendTheme, Theme } from '@chakra-ui/react';
+import { extendTheme } from '@chakra-ui/react';
 import { breakpoints, colors, config, fonts, radii } from './foundations/index';
 import { components } from './components';
 
-export const theme: Theme = extendTheme({
+export const theme = extendTheme({
   breakpoints,
   colors,
   components,
