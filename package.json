@@ -1,5 +1,6 @@
 {
-  "name": "next-ts-starter-kit",
+  "name": "neks",
+  "description": "A Typescript powered NextJS kit with Chakra UI and Recoil",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,13 +9,17 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "sitemap": "next-sitemap",
+    "post-install": "yarn run gen:theme-typings",
+    "gen:theme-typings": "chakra-cli tokens './theme/index.ts'"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.6",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@googlemaps/js-api-loader": "^1.12.2",
+    "@hookform/error-message": "^2.0.0",
     "axios": "^0.21.4",
     "date-fns": "^2.24.0",
     "deep-extend": "^0.6.0",
@@ -26,12 +31,14 @@
     "react": "17.0.2",
     "react-cookie": "^4.1.1",
     "react-dom": "17.0.2",
+    "react-hook-form": "^7.17.4",
     "react-i18next": "^11.11.4",
     "react-query": "^3.21.0"
   },
   "devDependencies": {
     "@axe-core/react": "^4.2.2",
     "@babel/core": "^7.15.0",
+    "@chakra-ui/cli": "^1.5.2",
     "@emotion/babel-plugin": "^11.3.0",
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",
@@ -62,6 +69,7 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-watch": "^7.0.0",
     "next-compose-plugins": "^2.2.1",
+    "next-sitemap": "^1.6.179",
     "prettier": "^2.3.2",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
