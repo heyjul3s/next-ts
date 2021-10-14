@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, ContainerProps } from '@chakra-ui/react';
+
 import LayoutHead, { LayoutHeadProps } from './LayoutHead';
 
 type LayoutProps = {
@@ -28,6 +29,7 @@ export default function Layout({
         <Container
           display="flex"
           flexDir="column"
+          maxW="container.lg"
           __css={{
             paddingRight: '1em',
             paddingLeft: '1em'
