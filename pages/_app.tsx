@@ -1,10 +1,12 @@
 import React from 'react';
+import { RecoilRoot } from 'recoil';
 import { AppProps, NextWebVitalsMetric } from 'next/app';
 import { useRouter } from 'next/router';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { Hydrate } from 'react-query/hydration';
 import { ChakraProvider, CSSReset } from '@chakra-ui/react';
+
 import { GlobalStyles, Chakra } from '@/components/common';
 import { theme } from '@/theme/index';
 import { gtag } from '@/utils/analytics';
@@ -71,7 +73,9 @@ export default function App({
           <ReactQueryDevtools />
           <Chakra cookies={pageProps.cookies}>
             <LayoutNoop pageProps={pageProps}>
-              <Component {...pageProps} />
+              <RecoilRoot>
+                <Component {...pageProps} />
+              </RecoilRoot>
             </LayoutNoop>
           </Chakra>
         </ChakraProvider>
