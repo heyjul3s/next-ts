@@ -11,8 +11,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "sitemap": "next-sitemap",
-    "post-install": "yarn run gen:theme-typings",
-    "gen:theme-typings": "chakra-cli tokens './theme/index.ts'"
+    "post-install": "yarn run theme-typings",
+    "theme-typings": "chakra-cli tokens './theme/index.ts'"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.6",
@@ -33,7 +33,8 @@
     "react-dom": "17.0.2",
     "react-hook-form": "^7.17.4",
     "react-i18next": "^11.11.4",
-    "react-query": "^3.21.0"
+    "react-query": "^3.21.0",
+    "recoil": "^0.4.1"
   },
   "devDependencies": {
     "@axe-core/react": "^4.2.2",
