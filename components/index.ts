@@ -1,1 +1,1 @@
-export { GlobalStyles, Layout, MatchMedia } from './common/global';
+export { GlobalStyles, Layout } from './common/global';
