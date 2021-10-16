@@ -6,7 +6,7 @@ export class Request {
   static DEFAULT_API_CONFIG = {
     returnRejectedPromiseOnError: true,
     timeout: 30000,
-    baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
+    baseURL: process.env.NEXT_PUBLIC_API,
     headers: {
       common: {
         'Content-Type': 'application/json',
