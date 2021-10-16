@@ -6,13 +6,17 @@ import {
   localStorageManager
 } from '@chakra-ui/react';
 
+import type { AppTheme } from '@/theme/index';
+
 type ChakraProps = {
   cookies?: string;
+  theme: AppTheme;
   children: React.ReactNode;
 };
 
 export default function Chakra({
   cookies,
+  theme,
   children
 }: ChakraProps): React.ReactElement {
   const colorModeManager =
@@ -21,7 +25,7 @@ export default function Chakra({
       : localStorageManager;
 
   return (
-    <ChakraProvider colorModeManager={colorModeManager}>
+    <ChakraProvider colorModeManager={colorModeManager} theme={theme}>
       {children}
     </ChakraProvider>
   );

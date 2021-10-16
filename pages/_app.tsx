@@ -5,7 +5,8 @@ import { useRouter } from 'next/router';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { Hydrate } from 'react-query/hydration';
-import { ChakraProvider, CSSReset } from '@chakra-ui/react';
+import { CSSReset } from '@chakra-ui/react';
+import { appWithTranslation } from 'next-i18next';
 
 import { GlobalStyles, Chakra } from '@/components/common';
 import { theme } from '@/theme/index';
@@ -23,10 +24,9 @@ if (!isServerSideRendered() && process.env.NODE_ENV !== 'production') {
 
 const Noop: React.FC = ({ children }) => <>{children}</>;
 
-export default function App({
-  Component,
-  pageProps
-}: AppProps): React.ReactNode {
+export default appWithTranslation(App);
+
+function App({ Component, pageProps }: AppProps): React.ReactElement {
   const TWENTY_FOUR_HOURS_MS = 86400000;
 
   const [queryClient] = React.useState(
@@ -67,18 +67,17 @@ export default function App({
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
-        <ChakraProvider theme={theme}>
+        <Chakra cookies={pageProps.cookies} theme={theme}>
           <GlobalStyles />
           <CSSReset />
           <ReactQueryDevtools />
-          <Chakra cookies={pageProps.cookies}>
-            <LayoutNoop pageProps={pageProps}>
-              <RecoilRoot>
-                <Component {...pageProps} />
-              </RecoilRoot>
-            </LayoutNoop>
-          </Chakra>
-        </ChakraProvider>
+
+          <LayoutNoop pageProps={pageProps}>
+            <RecoilRoot>
+              <Component {...pageProps} />
+            </RecoilRoot>
+          </LayoutNoop>
+        </Chakra>
       </Hydrate>
     </QueryClientProvider>
   );
@@ -90,5 +89,3 @@ export function reportWebVitals(metric: NextWebVitalsMetric): void {
     console.log(`${metric.name}: `, metric);
   }
 }
-
-export { getServerSideProps } from '@/components/common';
