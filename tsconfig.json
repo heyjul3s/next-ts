@@ -4,9 +4,8 @@
     "paths": {
       "@/api/*": ["api/*"],
       "@/components/*": ["components/*"],
-      "@/elements/*": ["components/elements/*"],
-      "@/fragments/*": ["components/fragments/*"],
-      "@/partials/*": ["components/partials/*"],
+      "@/common-components": ["components/common/*"],
+      "@/page-components": ["components/page/*"],
       "@/hooks/*": ["hooks/*"],
       "@/pages/*": ["pages/*"],
       "@/theme/*": ["theme/*"],
