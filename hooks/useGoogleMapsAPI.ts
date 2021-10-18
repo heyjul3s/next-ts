@@ -15,7 +15,14 @@ export const loadingStatus = {
   SUCCESS: LoadStatus.SUCCESS
 };
 
-export function useGoogleMapsAPI(options = { libraries: ['places'] }) {
+type TUseGoogleMapsAPI = {
+  status: TLoadStatus;
+  loading: boolean;
+};
+
+export function useGoogleMapsAPI(
+  options = { libraries: ['places'] }
+): TUseGoogleMapsAPI {
   const [status, setStatus] = React.useState<TLoadStatus>(
     loadingStatus.LOADING
   );

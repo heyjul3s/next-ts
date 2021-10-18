@@ -3,8 +3,8 @@ import React from 'react';
 export function useDebouncedValue<TValue extends unknown>(
   value: TValue,
   delay: number
-) {
-  const [debouncedValue, setDebouncedValue] = React.useState(value);
+): TValue {
+  const [debouncedValue, setDebouncedValue] = React.useState<TValue>(value);
 
   React.useEffect(() => {
     const handler = setTimeout(() => {
