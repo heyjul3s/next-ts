@@ -1,5 +1,5 @@
 export const fonts = {
-  heading: 'neue-haas-grotesk-display',
-  body: 'neue-haas-grotesk-display',
+  heading: 'Inter',
+  body: 'Inter',
   mono: 'Roboto Mono'
 };

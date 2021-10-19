@@ -3,8 +3,8 @@ import { theme } from '@chakra-ui/react';
 export const colors = {
   ...theme.colors,
   brand: {
-    500: '#2220c1',
-    600: '#ff3c00'
+    500: '#186B8C',
+    600: '#BAB7AC'
   },
   gray: {
     ...theme.colors.gray,
