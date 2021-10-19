@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, TextProps } from '@chakra-ui/react';
 
-type TextsProps = {
+type TTextsProps = {
   children: React.ReactNode;
 } & TextProps;
 
@@ -12,7 +12,7 @@ const Typography = {
     noOfLines,
     as = 'p',
     ...props
-  }: TextsProps): React.ReactElement {
+  }: TTextsProps): React.ReactElement {
     return (
       <Text
         as={as}
@@ -32,7 +32,7 @@ const Typography = {
     noOfLines,
     as = 'p',
     ...props
-  }: TextsProps): React.ReactElement {
+  }: TTextsProps): React.ReactElement {
     return (
       <Text
         as={as}
@@ -52,7 +52,7 @@ const Typography = {
     noOfLines,
     as = 'p',
     ...props
-  }: TextsProps): React.ReactElement {
+  }: TTextsProps): React.ReactElement {
     return (
       <Text
         as={as}
@@ -72,7 +72,7 @@ const Typography = {
     noOfLines,
     as = 'p',
     ...props
-  }: TextsProps): React.ReactElement {
+  }: TTextsProps): React.ReactElement {
     return (
       <Text
         as={as}
@@ -92,7 +92,7 @@ const Typography = {
     noOfLines,
     as = 'blockquote',
     ...props
-  }: TextsProps): React.ReactElement {
+  }: TTextsProps): React.ReactElement {
     return (
       <Text
         as={as}
@@ -112,7 +112,7 @@ const Typography = {
     noOfLines,
     as = 'p',
     ...props
-  }: TextsProps): React.ReactElement {
+  }: TTextsProps): React.ReactElement {
     return (
       <Text
         as={as}

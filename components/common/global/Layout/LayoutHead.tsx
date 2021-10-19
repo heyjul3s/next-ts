@@ -2,14 +2,14 @@ import React from 'react';
 import Head from 'next/head';
 import { DefaultSeo, NextSeoProps } from 'next-seo';
 
-export type LayoutHeadProps = NextSeoProps;
+export type TLayoutHeadProps = NextSeoProps;
 
 export default function LayoutHead({
   title,
   description,
   canonical,
   additionalMetaTags = []
-}: LayoutHeadProps): React.ReactElement {
+}: TLayoutHeadProps): React.ReactElement {
   return (
     <React.Fragment>
       <Head>

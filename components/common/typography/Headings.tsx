@@ -1,7 +1,7 @@
 import React from 'react';
 import { Heading, HeadingProps } from '@chakra-ui/react';
 
-type HeadingsProps = {
+type THeadingsProps = {
   children: React.ReactNode;
 } & HeadingProps;
 
@@ -11,7 +11,7 @@ const Headings = {
     isTruncated,
     as = 'h1',
     ...props
-  }: HeadingsProps): React.ReactElement {
+  }: THeadingsProps): React.ReactElement {
     return (
       <Heading as={as} variant="h1" isTruncated={isTruncated} {...props}>
         {children}
@@ -24,7 +24,7 @@ const Headings = {
     isTruncated,
     as = 'h2',
     ...props
-  }: HeadingsProps): React.ReactElement {
+  }: THeadingsProps): React.ReactElement {
     return (
       <Heading as={as} variant="h2" isTruncated={isTruncated} {...props}>
         {children}
@@ -37,7 +37,7 @@ const Headings = {
     isTruncated,
     as = 'h3',
     ...props
-  }: HeadingsProps): React.ReactElement {
+  }: THeadingsProps): React.ReactElement {
     return (
       <Heading as={as} variant="h3" isTruncated={isTruncated} {...props}>
         {children}
@@ -50,7 +50,7 @@ const Headings = {
     isTruncated,
     as = 'h4',
     ...props
-  }: HeadingsProps): React.ReactElement {
+  }: THeadingsProps): React.ReactElement {
     return (
       <Heading as={as} variant="h4" isTruncated={isTruncated} {...props}>
         {children}

@@ -8,7 +8,7 @@ import {
 
 import type { AppTheme } from '@/theme/index';
 
-type ChakraProps = {
+type TChakraProps = {
   cookies?: string;
   theme: AppTheme;
   children: React.ReactNode;
@@ -18,7 +18,7 @@ export default function Chakra({
   cookies,
   theme,
   children
-}: ChakraProps): React.ReactElement {
+}: TChakraProps): React.ReactElement {
   const colorModeManager =
     typeof cookies === 'string'
       ? cookieStorageManager(cookies)

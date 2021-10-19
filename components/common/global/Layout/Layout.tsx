@@ -1,11 +1,11 @@
 import React from 'react';
 import { Container, ContainerProps } from '@chakra-ui/react';
 
-import LayoutHead, { LayoutHeadProps } from './LayoutHead';
+import LayoutHead, { TLayoutHeadProps } from './LayoutHead';
 
-type LayoutProps = {
+type TLayoutProps = {
   children: JSX.Element | JSX.Element[];
-} & LayoutHeadProps &
+} & TLayoutHeadProps &
   ContainerProps;
 
 export default function Layout({
@@ -15,7 +15,7 @@ export default function Layout({
   additionalMetaTags = [],
   children,
   ...props
-}: LayoutProps): React.ReactElement {
+}: TLayoutProps): React.ReactElement {
   return (
     <React.Fragment>
       <LayoutHead
