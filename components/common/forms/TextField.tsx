@@ -29,7 +29,8 @@ export default function TextField({
   onChangeField,
   placeholder,
   rules,
-  type
+  type,
+  ...props
 }: TextFieldProps): React.ReactElement {
   const {
     field: {
@@ -83,6 +84,7 @@ export default function TextField({
           value={value}
           onChange={onChangeTextField}
           onBlur={onBlurTextField}
+          {...props}
           {...fieldProps}
         />
 

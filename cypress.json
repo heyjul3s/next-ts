@@ -1,0 +1,18 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "watchForFileChanges": true,
+  "reporter": "mochawesome",
+  "testFiles": "**/*.feature",
+  "reporterOptions": {
+    "reportDir": "cypress/results",
+    "overwrite": false,
+    "html": false,
+    "json": true,
+    "quiet": true
+  },
+  "viewportWidth": 1280,
+  "viewportHeight": 1024,
+  "projectId": "sample",
+  "chromeWebSecurity": false,
+  "video": false
+}
