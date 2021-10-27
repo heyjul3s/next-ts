@@ -21,6 +21,7 @@ export default function Searchbar(): React.ReactElement {
       <form noValidate>
         <TextField
           id="searchbar"
+          data-cy="searchbar"
           name="searchbar"
           type="search"
           labelText="Search"

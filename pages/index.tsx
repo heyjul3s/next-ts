@@ -22,7 +22,11 @@ export default function Home(): React.ReactElement {
     >
       <Searchbar />
 
-      <Grid gridTemplateColumns="repeat(3, 1fr)" gridGap="1em">
+      <Grid
+        data-cy="search-results"
+        gridTemplateColumns="repeat(3, 1fr)"
+        gridGap="1em"
+      >
         {!!posts?.data?.length &&
           posts.data.map(({ title, body, id }) => (
             <S.Post key={id}>
