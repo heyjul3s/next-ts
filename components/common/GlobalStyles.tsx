@@ -1,7 +1,7 @@
 import React from 'react';
 import { Global } from '@emotion/react';
 
-export default function GlobalStyles(): React.ReactElement {
+export function GlobalStyles(): React.ReactElement {
   return (
     <Global
       styles={`

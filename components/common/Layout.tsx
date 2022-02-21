@@ -8,7 +8,7 @@ type TLayoutProps = {
 } & TLayoutHeadProps &
   ContainerProps;
 
-export default function Layout({
+export function Layout({
   title,
   description,
   canonical,

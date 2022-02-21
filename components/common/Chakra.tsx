@@ -14,7 +14,7 @@ type TChakraProps = {
   children: React.ReactNode;
 };
 
-export default function Chakra({
+export function Chakra({
   cookies,
   theme,
   children
