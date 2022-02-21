@@ -1,2 +1,2 @@
 export { Post } from './Post';
-export { Searchbar } from './Searchbar';
+export { SearchBar } from './SearchBar';
