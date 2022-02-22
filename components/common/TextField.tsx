@@ -9,18 +9,15 @@ import { FormField } from './FormField';
 import { theme } from '@/theme/index';
 import { ConnectForm } from './ConnectForm';
 
-import type {
-  FieldValues,
-  FormState,
-  UseFormRegister,
-  RegisterOptions
-} from 'react-hook-form';
+import type { RegisterOptions } from 'react-hook-form';
 
 import type {
   FormControlProps,
   FormLabelProps,
   InputProps
 } from '@chakra-ui/react';
+
+import type { TConnectFormCallback } from './ConnectForm';
 
 type TTextFieldProps = {
   id?: string;
@@ -31,11 +28,6 @@ type TTextFieldProps = {
   FormLabelProps &
   FormControlProps &
   RegisterOptions;
-
-type TConnectFormCallback = {
-  formState: FormState<FieldValues>;
-  register: UseFormRegister<FieldValues>;
-};
 
 export function TextField({
   disabled,
