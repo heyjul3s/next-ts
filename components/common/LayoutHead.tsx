@@ -4,7 +4,7 @@ import { DefaultSeo, NextSeoProps } from 'next-seo';
 
 export type TLayoutHeadProps = NextSeoProps;
 
-export default function LayoutHead({
+export function LayoutHead({
   title,
   description,
   canonical,

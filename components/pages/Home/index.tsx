@@ -1,2 +1,2 @@
-export { S } from './styled';
-export { Searchbar } from './Searchbar';
+export { Post } from './Post';
+export { SearchBar } from './SearchBar';

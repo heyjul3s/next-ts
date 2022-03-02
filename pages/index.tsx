@@ -1,18 +1,29 @@
 import React from 'react';
-import { useRecoilValue } from 'recoil';
-import { GetStaticPropsResult } from 'next';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { QueryClient } from 'react-query';
-import { dehydrate, DehydratedState } from 'react-query/hydration';
-import { Grid, Text } from '@chakra-ui/react';
+import { dehydrate } from 'react-query/hydration';
+import { Flex, Grid, Text } from '@chakra-ui/react';
 
 import { Layout } from '@/components/common/index';
 import { usePostsQuery, fetchPosts } from '@/api/index';
-import { S, Searchbar } from '@/components/pages/Home/index';
-import { selectSearchbarQuery } from '@/components/pages/Home/Searchbar/state/selectors';
+import { Post, SearchBar } from '@/components/pages/Home/index';
+import { postsState } from '@/state/posts/atoms';
+import { selectPostsByQuery } from '@/state/posts/selectors';
+import { selectSearchbarQuery } from '@/state/searchBar/selectors';
+
+import type { GetStaticPropsResult } from 'next';
+import type { DehydratedState } from 'react-query/hydration';
+import type { TPost } from '@/api/index';
 
 export default function Home(): React.ReactElement {
   const searchQuery = useRecoilValue(selectSearchbarQuery);
-  const posts = usePostsQuery(searchQuery);
+  const setPostsState = useSetRecoilState(postsState);
+  const posts = useRecoilValue(selectPostsByQuery);
+  const postsResponse = usePostsQuery();
+
+  React.useEffect(() => {
+    setPostsState(postsResponse?.data as TPost[]);
+  }, [postsResponse]);
 
   return (
     <Layout
@@ -20,22 +31,43 @@ export default function Home(): React.ReactElement {
       className="home-index"
       description={'My Page Description'}
     >
-      <Searchbar />
+      <SearchBar />
 
       <Grid
-        data-cy="search-results"
-        gridTemplateColumns="repeat(3, 1fr)"
-        gridGap="1em"
+        templateColumns={[
+          'repeat(1, 1fr)',
+          'repeat(2, 1fr)',
+          'repeat(4, 1fr)',
+          'repeat(5, 1fr)'
+        ]}
+        gap={6}
       >
-        {!!posts?.data?.length &&
-          posts.data.map(({ title, body, id }) => (
-            <S.Post key={id}>
+        {!!posts?.length &&
+          posts.map(({ title, body, id }) => (
+            <Post key={id}>
               <Text as="h2" fontWeight={900} color="brand.500">
                 {title}
               </Text>
               <p>{body}</p>
-            </S.Post>
+            </Post>
           ))}
+
+        {!posts?.length && (
+          <Flex
+            width="100vw"
+            minHeight="50vh"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Text>
+              Search term{' '}
+              <strong>
+                <em>"{searchQuery}"</em>
+              </strong>{' '}
+              yielded no results.
+            </Text>
+          </Flex>
+        )}
       </Grid>
     </Layout>
   );

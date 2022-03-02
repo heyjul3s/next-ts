@@ -1,13 +1,12 @@
 import styled from '@emotion/styled';
-import { FormControl, FormControlProps } from '@chakra-ui/react';
+import { FormControl } from '@chakra-ui/react';
+import type { FormControlProps } from '@chakra-ui/react';
 
-const FormField = styled(FormControl)<FormControlProps>`
+export const FormField = styled(FormControl)<FormControlProps>`
   > input[data-invalid] {
     box-shadow: none;
-    border-color: transparent;
     color: ${(props) => (props.isInvalid ? 'red.500' : 'black')};
+    border-color: transparent;
     border-bottom-color: ${(props) => (props.isInvalid ? 'red.500' : 'black')};
   }
 `;
-
-export default FormField;

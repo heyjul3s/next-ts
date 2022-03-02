@@ -2,10 +2,10 @@ import React from 'react';
 import { useSetRecoilState } from 'recoil';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { searchbarQueryState } from './state/atoms';
+import { searchbarQueryState } from '@/state/searchBar/atoms';
 import { TextField } from '@/components/common/index';
 
-export default function Searchbar(): React.ReactElement {
+export function SearchBar(): React.ReactElement {
   const setSearchQuery = useSetRecoilState(searchbarQueryState);
 
   const form = useForm({
@@ -25,8 +25,14 @@ export default function Searchbar(): React.ReactElement {
           name="searchbar"
           type="search"
           labelText="Search"
-          onChangeField={onChange}
-          control={form.control}
+          onChange={
+            onChange as
+              | (React.ChangeEventHandler<HTMLInputElement> &
+                  React.FormEventHandler<HTMLLabelElement> &
+                  React.FormEventHandler<HTMLDivElement> &
+                  ((event: any) => void))
+              | undefined
+          }
         />
       </form>
     </FormProvider>
