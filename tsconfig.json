@@ -6,7 +6,7 @@
       "@/components/*": ["components/*"],
       "@/common-components": ["components/common/*"],
       "@/page-components": ["components/page/*"],
-      "@/hooks/*": ["src/hooks/*"],
+      "@/hooks/*": ["hooks/*"],
       "@/pages/*": ["pages/*"],
       "@/state/*": ["state/*"],
       "@/theme/*": ["theme/*"],
