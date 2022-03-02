@@ -13,8 +13,9 @@ import type { FormProviderProps, UseFormProps } from 'react-hook-form';
 export interface IFormProps {
   children: ReactNode;
   config: UseFormProps;
-  schema: any;
-  onSubmitForm: (values: any) => Promise<void | IOnSubmitResult>;
+  onSubmitForm: (
+    values: any
+  ) => Promise<void | Partial<IOnSubmitResult>> | void;
 }
 export interface IOnSubmitResult {
   FORM_ERROR?: string;
@@ -31,9 +32,8 @@ const FormProvider = ({ children, ...props }: TFormProviderProps) => (
   <ReactHookFormProvider {...props}>{children}</ReactHookFormProvider>
 );
 
-export function Form({ children, config, onSubmitForm, schema }: IFormProps) {
+export function Form({ children, config, onSubmitForm }: IFormProps) {
   const form = useForm({
-    ...(!!config?.resolver && { resolver: joiResolver(schema) }),
     ...config
   });
 
