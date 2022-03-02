@@ -39,6 +39,7 @@ export function Layout({
             'container.lg',
             'container.xl'
           ]}
+          py={'4'}
           {...props}
         >
           {children}
