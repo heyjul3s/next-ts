@@ -1,4 +1,4 @@
-import { Request } from '@/utils/request';
+import { Request } from './request';
 import { AxiosRequestConfig } from 'axios';
 import { useQuery } from 'react-query';
 import { endpoints } from './endpoints';
