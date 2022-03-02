@@ -16,16 +16,16 @@ export function Newsletter() {
   });
 
   const onSubmit =
-    (enrollNewsletter: (props: DefaultFormFields) => void) => (data: any) => {
-      if (!!data?.email) {
-        enrollNewsletter({ EMAIL: data.newsletter_email });
+    (enrollNewsletter: (props: DefaultFormFields) => void) => (values: any) => {
+      if (!!values?.email) {
+        enrollNewsletter({ EMAIL: values.newsletter_email });
       }
     };
 
   return (
     <MailchimpSubscribe
       url={process?.env?.NEXT_PUBLIC_MAILCHIMP_SUBSCRIBE_URL || ''}
-      render={({ subscribe, status, message }) => {
+      render={({ subscribe, status }) => {
         const hasSignedUp = status === 'success';
         const isMailchimpSubmissionError = status === 'error';
 
