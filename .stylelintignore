@@ -1,0 +1,8 @@
+/node_modules
+/.pnp
+.pnp.js
+/coverage
+/.next/
+/out/
+/build
+/cypress
