@@ -2,7 +2,7 @@ import { selector } from 'recoil';
 import Fuse from 'fuse.js';
 import { postsState } from './atoms';
 import { searchbarQueryState } from '../searchBar/atoms';
-import { TPost } from '@/api/index';
+import { TPost } from '@/requests/index';
 
 type TPostSearchResult = {
   refIndex: number;

@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@/api/*": ["api/*"],
+      "@/requests/*": ["requests/*"],
       "@/components/*": ["components/*"],
       "@/common-components": ["components/common/*"],
       "@/page-components": ["components/page/*"],
