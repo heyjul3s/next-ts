@@ -1,6 +1,6 @@
-# Next TS
+# NEKS
 
-A typescript powered NextJS boilerplate with ChakraUI and RecoilJS.
+A TypeScript powered NextJS boilerplate with ChakraUI, RecoilJS, Cypress, Storybook and friends.
 
 | Dependency                                                       | Version | Use              |
 | ---------------------------------------------------------------- | ------- | ---------------- |
@@ -128,9 +128,9 @@ The **utils** directory will be where general, generic utility functions are kep
 
 ## Notes And Other Instructions
 
-### Setting Up Storybook
+### Storybook
 
-To add Storybook to the project, simply run `npx sb init` and follow the prompts.
+Stories are setup to live in `src/stories` along with a Chakra UI context provider plus light and dark mode capabilities. You can configure for a different directory if you wish via `.storybook/main.js`.
 
 ### Web Workers
 
