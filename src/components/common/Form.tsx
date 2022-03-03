@@ -5,8 +5,6 @@ import {
   useForm
 } from 'react-hook-form';
 
-import { joiResolver } from '@hookform/resolvers/joi';
-
 import type { ReactNode } from 'react';
 import type { FormProviderProps, UseFormProps } from 'react-hook-form';
 
