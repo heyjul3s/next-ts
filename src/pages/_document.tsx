@@ -1,14 +1,10 @@
-import NextDocument, {
-  Html,
-  Head,
-  Main,
-  NextScript,
+import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
+
+import type {
   DocumentContext,
   DocumentProps,
   DocumentInitialProps
 } from 'next/document';
-
-import { GA_TRACKING_ID } from '@/utils/analytics';
 
 export default class Document extends NextDocument<DocumentProps | unknown> {
   static async getInitialProps(
@@ -35,31 +31,20 @@ export default class Document extends NextDocument<DocumentProps | unknown> {
     return (
       <Html lang="en-AU">
         <Head>
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-          />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GA_TRACKING_ID}', {
-                    page: window.location.pathname
-                });`
-            }}
-          />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
+
           <link
             rel="preconnect"
             href="https://fonts.gstatic.com"
             crossOrigin="true"
           />
+
           <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"
             rel="stylesheet"
           />
         </Head>
+
         <body className="loading">
           <Main />
           <NextScript />

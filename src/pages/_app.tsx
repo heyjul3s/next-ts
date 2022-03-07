@@ -1,5 +1,6 @@
 import React from 'react';
 import { RecoilRoot } from 'recoil';
+import Script from 'next/script';
 import { AppProps, NextWebVitalsMetric } from 'next/app';
 import { useRouter } from 'next/router';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -10,7 +11,7 @@ import { appWithTranslation } from 'next-i18next';
 
 import { GlobalStyles, Chakra } from '@/components/common';
 import { theme } from '@/theme/index';
-import { gtag } from '@/utils/analytics';
+import { gtag, GA_TRACKING_ID } from '@/utils/analytics';
 
 const isServerSideRendered = () => typeof window === 'undefined';
 
@@ -65,21 +66,40 @@ function App({ Component, pageProps }: AppProps): React.ReactElement {
   }, [router.events]);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <Chakra cookies={pageProps.cookies} theme={theme}>
-          <GlobalStyles />
-          <CSSReset />
-          <ReactQueryDevtools />
+    <>
+      <Script
+        async
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+      />
 
-          <LayoutNoop pageProps={pageProps}>
-            <RecoilRoot>
-              <Component {...pageProps} />
-            </RecoilRoot>
-          </LayoutNoop>
-        </Chakra>
-      </Hydrate>
-    </QueryClientProvider>
+      <Script id="gtag" strategy="afterInteractive">
+        {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${GA_TRACKING_ID}', {
+          page_path: window.location.pathname,
+        });
+        `}
+      </Script>
+
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <Chakra cookies={pageProps.cookies} theme={theme}>
+            <GlobalStyles />
+            <CSSReset />
+            <ReactQueryDevtools />
+
+            <LayoutNoop pageProps={pageProps}>
+              <RecoilRoot>
+                <Component {...pageProps} />
+              </RecoilRoot>
+            </LayoutNoop>
+          </Chakra>
+        </Hydrate>
+      </QueryClientProvider>
+    </>
   );
 }
 
