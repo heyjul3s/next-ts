@@ -1,0 +1,49 @@
+name: ES/Style Linting And Formatting
+
+on:
+  push:
+    branches: [master, main, develop]
+
+  pull_request:
+    branches: [master, main, develop]
+
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setting Up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+
+      - name: Installing NPM packages
+        run: yarn
+
+      - name: Get File(s) Changed
+        id: get_files_changed
+        uses: trilom/file-changes-action@v1.2.3
+        with:
+          output: ' '
+
+      - name: List File(s) Changed
+        run: |
+          echo Added files: ${{ steps.get_files_changed.outputs.files_added }}
+          echo Changed files: ${{ steps.get_files_changed.outputs.files_modified }}
+          echo Removed files: ${{ steps.get_files_changed.outputs.files_removed }}
+
+      - name: Style Lint
+        if: ${{ always() && (steps.get_file_changes.outputs.files_added || steps.get_file_changes.outputs.files_modified) }}
+        run: yarn stylelint --config ./.stylelintrc --ignore-path ./.stylelintignore --allow-empty-input ${{ steps.get_file_changes.outputs.files_added }} ${{ steps.get_file_changes.outputs.files_modified }} --fix
+
+      - name: ES Lint
+        if: ${{ always() && (steps.get_file_changes.outputs.files_added || steps.get_file_changes.outputs.files_modified) }}
+        run: yarn eslint --config ./eslintrc.js -e "**/*.(ts|tsx|js|jsx|css|scss|html|md|json|yml)" ${{ steps.get_file_changes.outputs.files_added }} ${{ steps.get_file_changes.outputs.files_modified }} --fix
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4.1.2
+        with:
+          commit_message: Apply ESLint and StyleLint formatting changes
