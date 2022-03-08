@@ -21,8 +21,9 @@
     "cy-open": "cypress open",
     "merge-reports": "mkdir -p mochareports && mochawesome-merge --reportDir cypress/results >> mochareports/mochawesome.json",
     "create-report": "marge mochareports/mochawesome.json -f report -o mochareports",
-    "test": "jest --config jest.config.js",
-    "test-watch": "jest --config jest.config.js --watch"
+    "test:jest": "jest --passWithNoTests",
+    "test:jest-since-dev": "jest --changedSince=develop",
+    "test:jest-watch": "jest --watch"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.7",
