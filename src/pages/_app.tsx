@@ -1,7 +1,6 @@
 import React from 'react';
 import { RecoilRoot } from 'recoil';
 import Script from 'next/script';
-import { AppProps, NextWebVitalsMetric } from 'next/app';
 import { useRouter } from 'next/router';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -13,6 +12,9 @@ import { GlobalStyles, Chakra } from '@/components/common';
 import { theme } from '@/theme/index';
 import { gtag, GA_TRACKING_ID } from '@/utils/analytics';
 
+import type { AppProps, NextWebVitalsMetric } from 'next/app';
+import type { NextPage } from 'next';
+
 const isServerSideRendered = () => typeof window === 'undefined';
 
 if (!isServerSideRendered() && process.env.NODE_ENV !== 'production') {
@@ -23,11 +25,22 @@ if (!isServerSideRendered() && process.env.NODE_ENV !== 'production') {
   });
 }
 
-const Noop: React.FC = ({ children }) => <>{children}</>;
+const Noop: React.FC<{ children: React.PropsWithChildren }> = ({
+  children
+}) => <>{children}</>;
 
-export default appWithTranslation(App);
+type TNextPageWithLayout = NextPage & {
+  getLayout?: (page: React.ReactElement) => React.ReactNode;
+};
 
-function App({ Component, pageProps }: AppProps): React.ReactElement {
+type TAppPropsWithLayout = AppProps & {
+  Component: TNextPageWithLayout;
+};
+
+function App({
+  Component,
+  pageProps
+}: TAppPropsWithLayout): React.ReactElement {
   const TWENTY_FOUR_HOURS_MS = 86400000;
 
   const [queryClient] = React.useState(
@@ -52,6 +65,7 @@ function App({ Component, pageProps }: AppProps): React.ReactElement {
   }, []);
 
   const router = useRouter();
+  const getLayout = Component.getLayout ?? ((page) => page);
 
   React.useEffect(() => {
     const handleRouteChange = (url: URL) => {
@@ -75,12 +89,14 @@ function App({ Component, pageProps }: AppProps): React.ReactElement {
 
       <Script id="gtag" strategy="afterInteractive">
         {`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '${GA_TRACKING_ID}', {
-          page_path: window.location.pathname,
-        });
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){ dataLayer.push(arguments); }
+
+          gtag('js', new Date());
+          
+          gtag('config', '${GA_TRACKING_ID}', {
+            page_path: window.location.pathname,
+          });
         `}
       </Script>
 
@@ -91,11 +107,11 @@ function App({ Component, pageProps }: AppProps): React.ReactElement {
             <CSSReset />
             <ReactQueryDevtools />
 
-            <LayoutNoop pageProps={pageProps}>
-              <RecoilRoot>
-                <Component {...pageProps} />
-              </RecoilRoot>
-            </LayoutNoop>
+            <RecoilRoot>
+              <LayoutNoop pageProps={pageProps}>
+                {getLayout(<Component {...pageProps} />)}
+              </LayoutNoop>
+            </RecoilRoot>
           </Chakra>
         </Hydrate>
       </QueryClientProvider>
@@ -103,9 +119,12 @@ function App({ Component, pageProps }: AppProps): React.ReactElement {
   );
 }
 
+// *NOTE: Remove if reporting is not needed
 export function reportWebVitals(metric: NextWebVitalsMetric): void {
   if (process.env.NODE_ENV === 'development') {
     // eslint-disable-next-line
     console.log(`${metric.name}: `, metric);
   }
 }
+
+export default appWithTranslation(App);
