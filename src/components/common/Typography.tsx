@@ -1,26 +1,19 @@
 import React from 'react';
 import { Text, TextProps } from '@chakra-ui/react';
 
-type TTextsProps = {
+interface ITextsProps extends TextProps {
   children: React.ReactNode;
-} & TextProps;
+}
 
 const Typography = {
   LargeP({
     children,
-    isTruncated,
     noOfLines,
     as = 'p',
     ...props
-  }: TTextsProps): React.ReactElement {
+  }: ITextsProps): React.ReactElement {
     return (
-      <Text
-        as={as}
-        variant="largeP"
-        isTruncated={isTruncated}
-        noOfLines={noOfLines}
-        {...props}
-      >
+      <Text as={as} variant="largeP" noOfLines={noOfLines} {...props}>
         {children}
       </Text>
     );
@@ -28,19 +21,12 @@ const Typography = {
 
   P({
     children,
-    isTruncated,
     noOfLines,
     as = 'p',
     ...props
-  }: TTextsProps): React.ReactElement {
+  }: ITextsProps): React.ReactElement {
     return (
-      <Text
-        as={as}
-        variant="p"
-        isTruncated={isTruncated}
-        noOfLines={noOfLines}
-        {...props}
-      >
+      <Text as={as} variant="p" noOfLines={noOfLines} {...props}>
         {children}
       </Text>
     );
@@ -48,19 +34,12 @@ const Typography = {
 
   SmallP({
     children,
-    isTruncated,
     noOfLines,
     as = 'p',
     ...props
-  }: TTextsProps): React.ReactElement {
+  }: ITextsProps): React.ReactElement {
     return (
-      <Text
-        as={as}
-        variant="smallP"
-        isTruncated={isTruncated}
-        noOfLines={noOfLines}
-        {...props}
-      >
+      <Text as={as} variant="smallP" noOfLines={noOfLines} {...props}>
         {children}
       </Text>
     );
@@ -68,19 +47,12 @@ const Typography = {
 
   XSmallP({
     children,
-    isTruncated,
     noOfLines,
     as = 'p',
     ...props
-  }: TTextsProps): React.ReactElement {
+  }: ITextsProps): React.ReactElement {
     return (
-      <Text
-        as={as}
-        variant="xSmallP"
-        isTruncated={isTruncated}
-        noOfLines={noOfLines}
-        {...props}
-      >
+      <Text as={as} variant="xSmallP" noOfLines={noOfLines} {...props}>
         {children}
       </Text>
     );
@@ -88,19 +60,12 @@ const Typography = {
 
   PullQuote({
     children,
-    isTruncated,
     noOfLines,
     as = 'blockquote',
     ...props
-  }: TTextsProps): React.ReactElement {
+  }: ITextsProps): React.ReactElement {
     return (
-      <Text
-        as={as}
-        variant="pullQuote"
-        isTruncated={isTruncated}
-        noOfLines={noOfLines}
-        {...props}
-      >
+      <Text as={as} variant="pullQuote" noOfLines={noOfLines} {...props}>
         {children}
       </Text>
     );
@@ -108,19 +73,12 @@ const Typography = {
 
   Meta({
     children,
-    isTruncated,
     noOfLines,
     as = 'p',
     ...props
-  }: TTextsProps): React.ReactElement {
+  }: ITextsProps): React.ReactElement {
     return (
-      <Text
-        as={as}
-        variant="meta"
-        isTruncated={isTruncated}
-        noOfLines={noOfLines}
-        {...props}
-      >
+      <Text as={as} variant="meta" noOfLines={noOfLines} {...props}>
         {children}
       </Text>
     );
