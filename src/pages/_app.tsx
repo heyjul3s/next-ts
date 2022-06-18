@@ -2,6 +2,7 @@ import React from 'react';
 import { RecoilRoot } from 'recoil';
 import Script from 'next/script';
 import { useRouter } from 'next/router';
+import { DefaultSeo } from 'next-seo';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { Hydrate } from 'react-query/hydration';
@@ -11,6 +12,7 @@ import { appWithTranslation } from 'next-i18next';
 import { GlobalStyles, Chakra } from '@/components/common';
 import { theme } from '@/theme/index';
 import { gtag, GA_TRACKING_ID } from '@/utils/analytics';
+import defaultSEO from '../../next-seo.config';
 
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import type { NextPage } from 'next';
@@ -93,12 +95,26 @@ function App({
           function gtag(){ dataLayer.push(arguments); }
 
           gtag('js', new Date());
-          
+
           gtag('config', '${GA_TRACKING_ID}', {
             page_path: window.location.pathname,
           });
         `}
       </Script>
+
+      <DefaultSeo
+        {...defaultSEO}
+        additionalMetaTags={[
+          {
+            property: 'viewport',
+            content: 'initial-scale=1.0, width=device-width'
+          },
+          {
+            name: 'theme-color',
+            content: '#ffffff'
+          }
+        ]}
+      />
 
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
