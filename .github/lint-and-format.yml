@@ -2,10 +2,8 @@ name: ES/Style Linting And Formatting
 
 on:
   push:
-    branches: [master, main, develop]
-
   pull_request:
-    branches: [master, main, develop]
+    branches: [main, develop]
 
 jobs:
   linting:

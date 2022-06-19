@@ -2,13 +2,11 @@ name: Unit and User Flow Testing
 
 on:
   push:
-    branches: [master, main, develop]
-
   pull_request:
-    branches: [master, main, develop]
+    branches: [main, develop]
 
   workflow_run:
-    workflows: ['Linting']
+    workflows: ['ES/Style Linting And Formatting']
     types:
       - completed
 
