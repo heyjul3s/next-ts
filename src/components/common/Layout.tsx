@@ -3,32 +3,17 @@ import { Container, ContainerProps } from '@chakra-ui/react';
 
 import { Header } from './Header';
 import { Footer } from './Footer';
-import { LayoutHead } from './LayoutHead';
 
-import type { TLayoutHeadProps } from './LayoutHead';
-
-type TLayoutProps = {
+interface ILayoutProps extends ContainerProps {
   children: JSX.Element | JSX.Element[];
-} & TLayoutHeadProps &
-  ContainerProps;
+}
 
 export function Layout({
-  title,
-  description,
-  canonical,
-  additionalMetaTags = [],
   children,
   ...props
-}: TLayoutProps): React.ReactElement {
+}: ILayoutProps): React.ReactElement {
   return (
     <React.Fragment>
-      <LayoutHead
-        title={title}
-        description={description}
-        canonical={canonical}
-        additionalMetaTags={additionalMetaTags}
-      />
-
       <Header />
 
       <main id="main">

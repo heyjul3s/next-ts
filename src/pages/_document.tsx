@@ -12,6 +12,7 @@ export default class Document extends NextDocument<DocumentProps | unknown> {
   ): Promise<DocumentInitialProps> {
     const originalRenderPage = ctx.renderPage;
     const initialProps = await NextDocument.getInitialProps(ctx);
+
     try {
       ctx.renderPage = () =>
         originalRenderPage({
@@ -21,9 +22,10 @@ export default class Document extends NextDocument<DocumentProps | unknown> {
       // eslint-disable-next-line
       console.error(error);
     }
+
     return {
       ...initialProps,
-      styles: <>{initialProps.styles}</>
+      styles: [<>{initialProps.styles}</>]
     };
   }
 
