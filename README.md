@@ -27,7 +27,7 @@ Featuring:
 
 ## Getting Started
 
-The template is running on Yarn and uses an **.nvmrc** file.
+The template is running on Yarn (Yarn v1 as v2 doesn't seem to compatible wit NextJS as of writing) and uses an **.nvmrc** file.
 
 To get started:
 
@@ -37,14 +37,17 @@ To get started:
 
 ## Scripts
 
-| Script     | What it does                                                                  |
-| ---------- | ----------------------------------------------------------------------------- |
-| dev        | starts the application in development mode w/ lint concurrently               |
-| build      | creates an optimised production build of your application                     |
-| lint       | runs ES Linting                                                               |
-| lint-watch | runs ES Linting in watch mode                                                 |
-| start      | starts the application in production mode. run `build` first before doing so. |
-| export     | generates the static pages                                                    |
+| Script      | What it does                                                                  |
+| ----------- | ----------------------------------------------------------------------------- |
+| dev         | starts the application in development mode w/ lint concurrently               |
+| build       | creates an optimised production build of your application                     |
+| lint        | runs ES Lint and Stylelint                                                    |
+| start       | starts the application in production mode. run `build` first before doing so. |
+| export      | generates the static pages                                                    |
+| cy:test-dev | runs Cypress locally in dev mode                                              |
+| test:jest   | runs Jest tests                                                               |
+
+For full list of scripts, please refer to the root package.json file
 
 ## ENV
 
