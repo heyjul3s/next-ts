@@ -1,5 +1,6 @@
 export { AnchorLink } from './AnchorLink';
 export { Chakra } from './Chakra';
+export { Form } from './Form';
 export { GlobalStyles } from './GlobalStyles';
 export { ConnectForm } from './ConnectForm';
 export { FieldErrorMessage } from './FieldErrorMessage';

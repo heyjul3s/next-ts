@@ -17,21 +17,21 @@ export class Request {
       qs.stringify(params, { indices: false })
   };
 
-  public static get<Data extends unknown, Error extends unknown>(
+  public static get<Data, Error>(
     endpoint: string,
     config: AxiosRequestConfig = {}
   ): () => Promise<Data> {
     return Request.send<Data, Error>(endpoint, { ...config, method: 'GET' });
   }
 
-  public static post<Data extends unknown, Error extends unknown>(
+  public static post<Data, Error>(
     endpoint: string,
     config: AxiosRequestConfig = {}
   ): () => Promise<Data> {
     return Request.send<Data, Error>(endpoint, { ...config, method: 'POST' });
   }
 
-  public static send<Data extends unknown, Error extends unknown>(
+  public static send<Data, Error>(
     endpoint: string,
     config: AxiosRequestConfig = {}
   ): () => Promise<Data> {

@@ -26,11 +26,7 @@ export default function Home(): React.ReactElement {
   }, [postsResponse]);
 
   return (
-    <Layout
-      title={'My Page Title'}
-      className="home-index"
-      description={'My Page Description'}
-    >
+    <Layout title={'My Page Title'} className="home-index">
       <SearchBar />
 
       <Grid
@@ -62,7 +58,7 @@ export default function Home(): React.ReactElement {
             <Text>
               Search term{' '}
               <strong>
-                <em>"{searchQuery}"</em>
+                <em>&quot;{searchQuery}&quot;</em>
               </strong>{' '}
               yielded no results.
             </Text>
