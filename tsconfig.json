@@ -34,7 +34,7 @@
     "isolatedModules": true,
     "incremental": true
   },
-  "exclude": ["node_modules", "out", "**/*.e2e.ts", "cypress"],
+  "exclude": ["node_modules", "out", "tests", "cypress"],
   "include": [
     "next-env.d.ts",
     "**/*.d.ts",
