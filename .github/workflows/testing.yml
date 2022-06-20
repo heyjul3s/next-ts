@@ -29,5 +29,13 @@ jobs:
       - name: Run Unit Tests
         run: yarn test:jest
 
-      - name: Run User Flow Tests
-        run: yarn cy:test
+      - name: Run Cypress E2E
+        uses: cypress-io/github-action@v4
+        with:
+          browser: chrome
+          headless: true
+          build: yarn build
+          start: yarn test:e2e
+          wait-on: 'http://localhost:3099'
+          config: baseUrl=http://localhost:3099
+          spec: tests/e2e/**/*.e2e.ts
