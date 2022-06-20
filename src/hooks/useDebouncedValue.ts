@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function useDebouncedValue<TValue extends unknown>(
+export function useDebouncedValue<TValue>(
   value: TValue,
   delay: number
 ): TValue {

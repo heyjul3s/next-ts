@@ -1,0 +1,42 @@
+name: Unit and User Flow Testing
+
+on:
+  push:
+    branches: [main, develop]
+
+  pull_request:
+    branches: [main, develop]
+
+  workflow_run:
+    workflows: ['ES/Style Linting And Formatting']
+    types:
+      - completed
+
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setting Up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'yarn'
+
+      - name: Installing NPM packages
+        run: yarn
+
+      - name: Run Unit Tests
+        run: yarn test:jest
+
+      - name: Run Cypress E2E
+        uses: cypress-io/github-action@v4
+        with:
+          browser: chrome
+          build: yarn build
+          start: yarn test:e2e
+          wait-on: 'http://localhost:3099'
+          config: baseUrl=http://localhost:3099
+          spec: tests/e2e/**/*.e2e.ts

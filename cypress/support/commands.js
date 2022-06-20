@@ -24,6 +24,8 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+import '@testing-library/cypress/add-commands';
+
 Cypress.Commands.add('getBySel', (selector, ...args) =>
   cy.get(`[data-cy=${selector}]`, ...args)
 );

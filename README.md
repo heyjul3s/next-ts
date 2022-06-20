@@ -1,40 +1,29 @@
-# NEKS
+# NEXT-TS
 
-A TypeScript powered NextJS boilerplate with ChakraUI, RecoilJS, Cypress, Storybook and friends.
+A Typescript powered NextJS kit with Chakra UI, RecoilJS, React Query, Cypress, Storybook and friends.
 
-| Dependency                                                       | Version | Use              |
-| ---------------------------------------------------------------- | ------- | ---------------- |
-| [@axe-core/react](https://www.npmjs.com/package/@axe-core/react) | 4.2.1   | Accessibiliy     |
-| [@chakra-ui/react](https://chakra-ui.com/docs/getting-started)   | 1.6.4   | Styling          |
-| [@emotion/react](https://emotion.sh/docs/introduction)           | 11.4.0  | Styling          |
-| [@emotion/styled](https://emotion.sh/docs/introduction)          | 11.3.0  | Styling          |
-| [typescript](https://www.typescriptlang.org/docs/)               | 4.3.4   | Types            |
-| [axios](https://axios-http.com/)                                 | 0.21.1  | Requests         |
-| [react-query](https://react-query.tanstack.com/overview)         | 3.17.2  | Queries          |
-| [recoil](https://recoiljs.org/docs/introduction/installation)    | 0.3.1   | State Management |
-| [next-seo](https://github.com/garmeeh/next-seo)                  | 4.26.0  | SEO              |
-| [next-joi](https://github.com/codecoolture/next-joi)             | 2.2.1   | Route Validation |
+At a glance:
 
-## Libraries Of Interests
+| Dependency                                                       | Version |
+| ---------------------------------------------------------------- | ------- |
+| [next](https://nextjs.org/docs/getting-started)                  | 12.1.6  |
+| [@axe-core/react](https://www.npmjs.com/package/@axe-core/react) | 4.4.3   |
+| [@chakra-ui/react](https://chakra-ui.com/docs/getting-started)   | 2.2.1   |
+| [typescript](https://www.typescriptlang.org/docs/)               | 4.7.4   |
+| [axios](https://axios-http.com/)                                 | 0.27.2  |
+| [recoil](https://recoiljs.org/docs/introduction/installation)    | 0.7.3   |
+| [react-query](https://react-query.tanstack.com/overview)         | 3.39.1  |
+| [react-hook-form](https://react-hook-form.com)                   | 7.32.2  |
+| [cypress](https://docs.cypress.io/)                              | 10.1.0  |
 
-| Package                                                                    | Version | Use                    |
-| -------------------------------------------------------------------------- | ------- | ---------------------- |
-| [@next-auth/react-query](https://github.com/nextauthjs/react-query#readme) | 0.0.9   | Authentication         |
-| [next-useragent](https://github.com/tokuda109/next-useragent)              | 2.6.0   | Device Useragent       |
-| [react-hook-form](https://react-hook-form.com)                             | 7.9.0   | Forms                  |
-| [joi](https://joi.dev/)                                                    | 17.4.0  | Form Validation Schema |
+Featuring:
 
-## Foreword
-
-Performance metrics are also logged in the console below is a list of the abbreviations and what they mean:
-
-| Abbreviation | What it means            |
-| ------------ | ------------------------ |
-| TTFB         | Time to First Byte       |
-| FCP          | First Contentful Paint   |
-| LCP          | Largest Contentful Paint |
-| FID          | First Input Delay        |
-| CLS          | Cumulative Layout Shift  |
+- Accessibility with axe-core
+- ii8n setup
+- Integration and E2E testing with Cypress, React Testing Library and Jest
+- Storybook for component documentation
+- Google Analytics
+- SEO
 
 ## Getting Started
 
@@ -86,7 +75,7 @@ project
 |   prettier.config.js
 |   package.json
 |   README.md
-└───api
+└───requests
 └───components
 └───hooks
 └───pages
@@ -94,9 +83,9 @@ project
 └───utils
 ```
 
-### API
+### Requests
 
-The **api** directory is where all API calls are located. This will also where endpoint constants can be declared.
+The **requests** directory is where all API calls are located. This will also where endpoint constants can be declared.
 
 ### Components
 
@@ -127,6 +116,18 @@ As the directory name implies, this is where all React hooks will be.
 The **utils** directory will be where general, generic utility functions are kept.
 
 ## Notes And Other Instructions
+
+### Google Analytics
+
+Performance metrics are logged in the console below is a list of the abbreviations and what they mean:
+
+| Abbreviation | What it means            |
+| ------------ | ------------------------ |
+| TTFB         | Time to First Byte       |
+| FCP          | First Contentful Paint   |
+| LCP          | Largest Contentful Paint |
+| FID          | First Input Delay        |
+| CLS          | Cumulative Layout Shift  |
 
 ### Storybook
 

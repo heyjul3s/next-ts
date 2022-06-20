@@ -109,7 +109,7 @@ export interface IUseKeyEventProps {
 
 export function useKeyEvent({ callbackEvent, targetKey }: IUseKeyEventProps) {
   const handleUserKeyPress = React.useCallback(
-    (event) => {
+    (event: KeyboardEvent) => {
       const { keyCode } = event;
 
       if (keyCode === keyMaps[targetKey]) {

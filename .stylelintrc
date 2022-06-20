@@ -1,9 +1,16 @@
 {
-  "extends": [
-    "stylelint-config-recommended",
-    "stylelint-config-prettier"
+  "extends": ["stylelint-config-recommended", "stylelint-config-prettier"],
+  "overrides": [
+    {
+      "files": ["src/**/*.{js,ts,tsx}"],
+      "customSyntax": "@stylelint/postcss-css-in-js",
+      "rules": {
+        "at-rule-no-unknown": null
+      }
+    }
   ],
   "rules": {
+    "at-rule-no-unknown": null,
     "no-empty-source": null,
     "declaration-empty-line-before": null,
     "max-empty-lines": 1,

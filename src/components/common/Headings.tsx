@@ -6,53 +6,33 @@ type THeadingsProps = {
 } & HeadingProps;
 
 const Headings = {
-  H1({
-    children,
-    isTruncated,
-    as = 'h1',
-    ...props
-  }: THeadingsProps): React.ReactElement {
+  H1({ children, as = 'h1', ...props }: THeadingsProps): React.ReactElement {
     return (
-      <Heading as={as} variant="h1" isTruncated={isTruncated} {...props}>
+      <Heading as={as} variant="h1" {...props}>
         {children}
       </Heading>
     );
   },
 
-  H2({
-    children,
-    isTruncated,
-    as = 'h2',
-    ...props
-  }: THeadingsProps): React.ReactElement {
+  H2({ children, as = 'h2', ...props }: THeadingsProps): React.ReactElement {
     return (
-      <Heading as={as} variant="h2" isTruncated={isTruncated} {...props}>
+      <Heading as={as} variant="h2" {...props}>
         {children}
       </Heading>
     );
   },
 
-  H3({
-    children,
-    isTruncated,
-    as = 'h3',
-    ...props
-  }: THeadingsProps): React.ReactElement {
+  H3({ children, as = 'h3', ...props }: THeadingsProps): React.ReactElement {
     return (
-      <Heading as={as} variant="h3" isTruncated={isTruncated} {...props}>
+      <Heading as={as} variant="h3" {...props}>
         {children}
       </Heading>
     );
   },
 
-  H4({
-    children,
-    isTruncated,
-    as = 'h4',
-    ...props
-  }: THeadingsProps): React.ReactElement {
+  H4({ children, as = 'h4', ...props }: THeadingsProps): React.ReactElement {
     return (
-      <Heading as={as} variant="h4" isTruncated={isTruncated} {...props}>
+      <Heading as={as} variant="h4" {...props}>
         {children}
       </Heading>
     );

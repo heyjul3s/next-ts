@@ -6,6 +6,9 @@ import type {
   DocumentInitialProps
 } from 'next/document';
 
+import type { AppPropsType } from 'next/dist/shared/lib/utils';
+import type { NextRouter } from 'next/router';
+
 export default class Document extends NextDocument<DocumentProps | unknown> {
   static async getInitialProps(
     ctx: DocumentContext
@@ -16,7 +19,12 @@ export default class Document extends NextDocument<DocumentProps | unknown> {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App) => (props) => <App {...props} />
+          enhanceApp: (App) => {
+            const EnhancedApp = (
+              props: AppPropsType<NextRouter, Record<string, unknown>>
+            ) => <App {...props} />;
+            return EnhancedApp;
+          }
         });
     } catch (error) {
       // eslint-disable-next-line
