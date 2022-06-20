@@ -1,5 +1,5 @@
 {
-  "name": "neks",
+  "name": "next-ts",
   "description": "A Typescript powered NextJS kit with Chakra UI and Recoil",
   "version": "0.1.0",
   "private": true,
@@ -23,9 +23,9 @@
     "post-install": "yarn run theme-typings",
     "theme-typings": "chakra-cli tokens './theme/index.ts'",
     "cy:test-dev": "start-server-and-test 'yarn build && yarn start' 3000 'yarn cy:run-dev'",
-    "cy:run-dev": "cypress run  --config baseUrl=http://localhost:3000",
+    "cy:run-dev": "cypress run --config baseUrl=http://localhost:3000",
     "cy:run": "cypress run",
-    "cy:open": "cypress open --e2e",
+    "cy:open-e2e": "cypress open --e2e",
     "test:jest": "jest --passWithNoTests",
     "test:jest-since-dev": "jest --changedSince=develop",
     "test:jest-watch": "jest --watch",
