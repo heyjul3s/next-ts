@@ -2,7 +2,7 @@ import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
 
 import {
   ChakraProvider,
-  cookieStorageManager,
+  cookieStorageManagerSSR,
   localStorageManager
 } from '@chakra-ui/react';
 
@@ -14,6 +14,8 @@ type TChakraProps = {
   children: React.ReactNode;
 };
 
+// * Wrapper for SSR
+// * Refer to https://chakra-ui.com/docs/styled-system/features/color-mode#add-colormodemanager-optional-for-ssr
 export function Chakra({
   cookies,
   theme,
@@ -21,7 +23,7 @@ export function Chakra({
 }: TChakraProps): React.ReactElement {
   const colorModeManager =
     typeof cookies === 'string'
-      ? cookieStorageManager(cookies)
+      ? cookieStorageManagerSSR(cookies)
       : localStorageManager;
 
   return (
