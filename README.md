@@ -1,12 +1,26 @@
-# NEKS
+# NEXT-TS
 
-A [TypeScript](https://www.typescriptlang.org/docs/) powered [NextJS](https://github.com/vercel/next.js) boilerplate with [ChakraUI](https://chakra-ui.com/docs/getting-started), [RecoilJS](https://recoiljs.org/docs/introduction/installation), [React Query](https://react-query.tanstack.com/overview), Cypress, Storybook and friends.
+A Typescript powered NextJS kit with Chakra UI, RecoilJS, React Query, Cypress, Storybook and friends.
+
+At a glance:
+
+| Dependency                                                       | Version |
+| ---------------------------------------------------------------- | ------- |
+| [next](https://nextjs.org/docs/getting-started)                  | 12.1.6  |
+| [@axe-core/react](https://www.npmjs.com/package/@axe-core/react) | 4.4.3   |
+| [@chakra-ui/react](https://chakra-ui.com/docs/getting-started)   | 2.2.1   |
+| [typescript](https://www.typescriptlang.org/docs/)               | 4.7.4   |
+| [axios](https://axios-http.com/)                                 | 0.27.2  |
+| [recoil](https://recoiljs.org/docs/introduction/installation)    | 0.7.3   |
+| [react-query](https://react-query.tanstack.com/overview)         | 3.39.1  |
+| [react-hook-form](https://react-hook-form.com)                   | 7.32.2  |
+| [cypress](https://docs.cypress.io/)                              | 10.1.0  |
 
 Featuring:
 
 - Accessibility with axe-core
 - ii8n setup
-- Integration and E2E testing with Cypress, React Testing Library
+- Integration and E2E testing with Cypress, React Testing Library and Jest
 - Storybook for component documentation
 - Google Analytics
 - SEO
@@ -61,7 +75,7 @@ project
 |   prettier.config.js
 |   package.json
 |   README.md
-└───api
+└───requests
 └───components
 └───hooks
 └───pages
@@ -69,9 +83,9 @@ project
 └───utils
 ```
 
-### API
+### Requests
 
-The **api** directory is where all API calls are located. This will also where endpoint constants can be declared.
+The **requests** directory is where all API calls are located. This will also where endpoint constants can be declared.
 
 ### Components
 
